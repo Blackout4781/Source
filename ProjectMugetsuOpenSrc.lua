@@ -710,30 +710,6 @@ spawn(function()
     end
 end)
 
---// Auto Eat \\--
-spawn(function()
-    while task.wait() do
-        if getgenv().Eat == true then
-            local partsEat = game:GetService("Workspace").World.Visuals
-
-            for i, v in ipairs(partsEat:GetChildren()) do
-                local prompt = v:FindFirstChild("Eat_Part");
-                if prompt and prompt:IsA("ProximityPrompt") then
-                    fireproximityprompt(prompt)
-                    task.wait(1)
-                end
-            end
-        end
-    end
-end)
-
-local function GetHuman()
-    local h = game.Players.LocalPlayer.Character
-    h = h and (h:FindFirstChild("Humanoid") or h:FindFirstChildWhichIsA("Humanoid"))
-    return h or workspace.CurrentCamera.CameraSubject
-end
-
-
 --// Update Labels \\--
 while true do task.wait()
     MeditationProg:Set("Meditation : "..slot1.MeditationProgression.Level.value.." | "..slot1.MeditationProgression.Exp.value.."/"..slot1.MeditationProgression.MaxExp.value)
